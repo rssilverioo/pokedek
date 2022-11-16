@@ -14,7 +14,7 @@ export default defineConfig({
         theme_color: "#ffffff",
         background_color: "#ffffff",
         orientation: "portrait",
-        lang: "es",
+        lang: "pt",
         icons: [
           {
             src: "pwa-16x16.png",

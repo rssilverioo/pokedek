@@ -15,7 +15,10 @@ const card = ref(null);
 watchEffect(() => {
   if (isLoad.value) {
     card.value.style.borderColor = colorsType[props.info.type];
+
+    card.value.style.backgroundColor = colorsType[props.info.type];
   }
+
 });
 
 function goDetails() {
@@ -31,10 +34,11 @@ function goDetails() {
       </div>
       <p class="card__name"> {{ info.name }}</p>
     </div>
-    <div class="card__img">
-      <img :src="info.img" :alt="info.name" />
+    <div class="card__img" >
+      <img :src="info.img" :alt="info.name" @load="isLoad = true" v-show="isLoad" />
+      
     </div>
-  </div>
+  </div> 
 </template>
 
 <style>
@@ -60,6 +64,10 @@ function goDetails() {
 .card__img img {
   width: 100%;
   height: 100%;
+  transition: all .2s ease-in-out;
+}
+.card__img img:hover {
+  transform: scale(1.1);
 }
 .card__name {
   text-transform: capitalize;
